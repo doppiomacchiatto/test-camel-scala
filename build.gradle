@@ -1,0 +1,49 @@
+apply plugin: 'scala'
+apply plugin: 'java'
+
+group = 'test-camel-scala'
+version = '0.0.1-SNAPSHOT'
+
+description = """A Camel Scala Route with ActiveMQ"""
+
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+
+task(runSimple,dependsOn: 'classes', type: JavaExec) {
+	main = 'esis.camel.scala.MyRouteMain'
+	classpath sourceSets.main.runtimeClasspath
+}
+defaultTasks 'runSimple'
+ext {
+    versions = [
+        scala: '2.10.2',
+        scalatest: '1.9.1',
+        scalacheck: '2.9.0-1.9',
+		camel: '2.11.1',
+		activemq:'5.8.0',
+		slf4j: '1.7.5',
+		log4j: '1.2.17'
+    ]
+}
+repositories { jcenter() }
+dependencies {
+	'''the ActiveMQ broker is optional and can be removed if connecting to a remote broker only '''
+	compile group: 'org.apache.activemq', name: 'activemq-kahadb-store', version: "$versions.activemq"
+	compile group: 'org.apache.activemq', name: 'activemq-broker', version: "$versions.activemq"
+	''' End Active MQ Broker dependencies'''
+	compile group: 'org.apache.activemq', name: 'activemq-client', version: "$versions.activemq"
+	compile group: 'org.apache.activemq', name: 'activemq-camel', version: "$versions.activemq"
+	compile group: 'org.apache.activemq', name: 'activemq-pool', version: "$versions.activemq"
+	compile group: 'org.apache.camel', name: 'camel-core', version: "$versions.camel"
+	compile group: 'org.apache.camel', name: 'camel-scala', version:"$versions.camel"
+	compile group: 'org.apache.camel', name: 'camel-jms', version:"$versions.camel"
+	compile group: 'org.scala-lang', name:'scala-compiler', version: "$versions.scala"
+	compile group: 'org.scala-lang', name: 'scala-library', version: "$versions.scala"
+	compile group: 'org.apache.camel', name: 'camel-spring', version:"$versions.camel"
+	compile group: 'org.scalatest', name:'scalatest_2.10', version: "$versions.scalatest"
+	compile group: 'org.slf4j', name: 'slf4j-api', version:"$versions.slf4j"
+	compile group: 'org.slf4j', name: 'slf4j-log4j12', version:"$versions.slf4j"
+	compile group: 'log4j', name: 'log4j', version:"$versions.log4j"
+	compile group: 'org.apache.camel', name: 'camel-test', version:"$versions.camel"
+
+}
