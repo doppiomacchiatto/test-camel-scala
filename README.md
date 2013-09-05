@@ -1,12 +1,7 @@
-This project depicts how-to configure camel-scala with gradle and activmq.  Scala has caught my 
-attention and I decided to learn it while invoking Apache Camel (http://camel.apache.org/).
-
-This project builds on top of the maven archetype camel-activemq.  There are many advantages to moving
-away from Maven and to use Gradle.  The first notable difference is the speed of your build.  Gradle
-can leverage your M2 repository and Maven Central as well as Ivy.  It's really the "Swiss Army knife
-of build + dependency management.
-
-Scope:
+Project Overview:
+This project depicts how-to configure camel, camel-scala, gradle and active-mq.  Scala has caught my 
+attention and I decided to learn it while implementing Apache Camel (http://camel.apache.org/).
+ 
 The project has a camel route, MyRouteBuilder, which reads .xml files from the file system, send the xml
 message to an activemq queue.  The logic then routes the message from the queue to an endpoint based
 on an xpath expression ("/person/city='London'").
@@ -22,3 +17,6 @@ To run the project from eclipse:
 2. Install the Scala Plugin.
 3. Open esis.camel.scala.MyRouteMain
 4. Right Click --> Run As --> Scala application.
+
+NOTE:  This project was first created with the maven archetype - camel-activemq.  This archetype is 
+a camel based active-mq, spring project.
