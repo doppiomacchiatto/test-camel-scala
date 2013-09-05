@@ -4,7 +4,7 @@ attention and I decided to learn it while implementing Apache Camel (http://came
  
 The project has a camel route, MyRouteBuilder, which reads .xml files from the file system, send the xml
 message to an activemq queue.  The logic then routes the message from the queue to an endpoint based
-on an xpath expression ("/person/city='London'").
+on expression: xpath("/person/city='London'").
 
 To run the project from the command line:
 
